@@ -6,20 +6,68 @@
     <title>Convite: Vingadores Unidos!</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos da Tela de Carregamento */
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0a0a0a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: opacity 0.8s ease, visibility 0.8s;
+        }
+        #btn-abrir {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid #e23636;
+            background: transparent;
+            color: white;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1.4rem;
+            cursor: pointer;
+            box-shadow: 0 0 20px #e23636;
+            transition: transform 0.3s, background 0.3s;
+            text-align: center;
+            line-height: 1.2;
+        }
+        #btn-abrir:hover {
+            transform: scale(1.1);
+            background: #e23636;
+            box-shadow: 0 0 40px #e23636;
+        }
+        @media (max-width: 600px) {
+            #btn-abrir {
+                width: 120px;
+                height: 120px;
+                font-size: 1.1rem;
+                border-width: 3px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Tela de Carregamento Interativa -->
+    <div id="overlay">
+        <button id="btn-abrir">ABRIR<br>CONVITE</button>
+    </div>
 
     <header class="hero-section">
         <div class="overlay"></div>
         <div class="content">
-            <h1 class="title">Vingadores,<br><span>Avante!</span></h1>
+            <h1 class="title">Vingadores,<span>Avante!</span></h1>
             <p class="subtitle">"Os heróis mais poderosos da Terra têm uma nova missão: <br>Comemorar o aniversário do Christopher e você foi convocado!"</p>
         </div>
     </header>
 
     <main class="invitation-details">
         <section class="info-card">
-            <h2>Missão Especial</h2>
+            <h2 id="missaoEspecial">Missão Especial</h2>
             <p><strong>RECRUTA:</strong> CHRISTOPHER</p>
             <p>Estamos montando uma equipe de elite para celebrar mais um ano de vida e precisamos de você no nosso QG!</p>
             
@@ -51,18 +99,23 @@
     </footer>
 
     <!-- Elemento de áudio para a trilha sonora -->
-    <audio id="bg-music" loop>
-        <source src="/avengers-theme.mp3" type="audio/mpeg">
+    <audio id="bg-music" autoplay loop>
+        <source src="avengers-theme.mp3" type="audio/mpeg">
     </audio>
 
     <script>
-        // Inicia o áudio na primeira interação do usuário com a página
-        window.addEventListener('click', function() {
-            const audio = document.getElementById('bg-music');
-            if (audio.paused) {
-                audio.play();
-            }
-        }, { once: true });
+        const overlay = document.getElementById('overlay');
+        const btnAbrir = document.getElementById('btn-abrir');
+        const audio = document.getElementById('bg-music');
+
+        btnAbrir.addEventListener('click', function() {
+            // Inicia a música (os navegadores permitem o áudio após este clique)
+            audio.play().catch(err => console.log("Erro ao iniciar áudio:", err));
+
+            // Esconde a tela preta suavemente conforme definido no seu CSS
+            overlay.style.opacity = '0';
+            overlay.style.visibility = 'hidden';
+        });
     </script>
 
 </body>

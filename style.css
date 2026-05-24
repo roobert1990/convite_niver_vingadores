@@ -31,7 +31,6 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    position: relative;
     border-bottom: 5px solid var(--marvel-red);
 }
 
@@ -165,6 +164,56 @@ footer {
 }
 
 @media (max-width: 600px) {
-    .title { font-size: 3.5rem; }
-    .info-card { padding: 25px; }
+    .hero-section {
+        height: 50vh; /* Altura ajustada para mobile */
+        background-position: center top; /* Foca na parte superior da imagem */
+        background-attachment: scroll; /* Melhora a performance em navegadores móveis */
+        background-size:contain;
+    }
+
+    .overlay {
+        /* Ajuste do gradiente para destacar melhor o fundo no mobile */
+        background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(21,21,21,1) 95%);
+    
+    }
+
+    .title { 
+        font-size: 1rem; 
+        padding: 0 10px;
+    }
+
+    .subtitle {
+        font-size: 0.5rem;
+        margin-top: 10px;
+        padding: 0 20px;
+        line-height: 1.4;
+    }
+
+    .info-card { 
+        padding: 30px 20px;
+        margin: -60px 15px 0; /* Puxa o card para cima da imagem suavemente */
+        text-align: center;
+        font-size: 0.9rem;
+
+    }
+
+    #missaoEspecial {
+        font-size: 2rem;
+    }
+
+    .details-grid {
+        grid-template-columns: 1fr; /* Coluna única para facilitar a leitura */
+        gap: 15px;
+    }
+
+    .btn-rsvp {
+        font-size: 1.3rem;
+        width: 100%;
+        padding: 15px;
+    }
+
+    .content {
+        position: relative;
+        top: 55px;
+    }
 }
