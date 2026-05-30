@@ -6,82 +6,39 @@
     <title>Convite: Vingadores Unidos!</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        /* Estilos da Tela de Carregamento */
-        #overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #0a0a0a;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10000;
-            transition: opacity 0.8s ease, visibility 0.8s;
-        }
-        #btn-abrir {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 4px solid #e23636;
-            background: transparent;
-            color: white;
-            font-family: 'Bebas Neue', cursive;
-            font-size: 1.4rem;
-            cursor: pointer;
-            box-shadow: 0 0 20px #e23636;
-            transition: transform 0.3s, background 0.3s;
-            text-align: center;
-            line-height: 1.2;
-        }
-        #btn-abrir:hover {
-            transform: scale(1.1);
-            background: #e23636;
-            box-shadow: 0 0 40px #e23636;
-        }
-        @media (max-width: 600px) {
-            #btn-abrir {
-                width: 120px;
-                height: 120px;
-                font-size: 1.1rem;
-                border-width: 3px;
-            }
-        }
-    </style>
 </head>
 <body>
-    <!-- Tela de Carregamento Interativa -->
-    <div id="overlay">
-        <button id="btn-abrir">ABRIR<br>CONVITE</button>
+
+    <div id="loading-screen" class="loading-screen">
+        <button id="start-btn" class="play-btn">AVANTE!</button>
+        <p class="loading-text">Clique para iniciar a missão</p>
     </div>
 
     <header class="hero-section">
         <div class="overlay"></div>
         <div class="content">
-            <h1 class="title">Vingadores,<span>Avante!</span></h1>
-            <p class="subtitle">"Os heróis mais poderosos da Terra têm uma nova missão: <br>Comemorar o aniversário do Christopher e você foi convocado!"</p>
+            <h1 class="title">Vingadores<br><span>Avante!</span></h1>
+            <p class="subtitle">"Os heróis mais poderosos da terra tem uma nova missão:" Comemorar o aniversário do Christopher e você foi convocado!</p>
         </div>
     </header>
 
     <main class="invitation-details">
         <section class="info-card">
-            <h2 id="missaoEspecial">Missão Especial</h2>
-            <p><strong>RECRUTA:</strong> CHRISTOPHER</p>
+            <h2>Missão Especial</h2>
+            <p><strong>Recruta:</strong> CHRISTOPHER</p>
             <p>Estamos montando uma equipe de elite para celebrar mais um ano de vida e precisamos de você no nosso QG!</p>
             
-            <div class="details-grid">
-                <div class="detail-item">
-                    <span class="icon">📅</span>
+            <div class="details-grid" id="back-data">
+                <div class="detail-item item-date">
+                    <span class="icon">❄️</span>
                     <p>4 DE JULHO</p>
                 </div>
-                <div class="detail-item">
-                    <span class="icon">🕒</span>
+                <div class="detail-item item-time">
+                    <img src="escudo-relogio.svg" class="icon" alt="Horário">
                     <p>17:00 Horas</p>
                 </div>
-                <div class="detail-item">
-                    <a class="local" href="https://www.google.com/maps/place/Parque+Lagoa+Do+Ouro/@-19.6158002,-43.908769,16.63z/data=!4m14!1m7!3m6!1s0xa67b820d4d44cd:0x770bb4a800e7689d!2sParque+Lagoa+Do+Ouro!8m2!3d-19.6158816!4d-43.9058891!16s%2Fg%2F11f4xrydt3!3m5!1s0xa67b820d4d44cd:0x770bb4a800e7689d!8m2!3d-19.6158816!4d-43.9058891!16s%2Fg%2F11f4xrydt3?authuser=0&entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank"><span class="icon">📍</span></a>
+                <div class="detail-item item-location">
+                    <a href="https://maps.app.goo.gl/mDhkNtpVU8s3zHNZ6" target="_blank"><span class="icon"><link rel="icon">🔨</span></a>
                     <p>QG DOS VINGADORES</p>
                 </div>
             </div>
@@ -90,7 +47,7 @@
         <section class="rsvp">
             <h3>Confirme sua Presença</h3>
             <p>Você aceita o chamado?</p>
-            <a href="https://chat.whatsapp.com/F16ZYEs0abCKh4HeJfCgdV" target="_blank" class="btn-rsvp">Confirmar via WhatsApp</a>
+            <a href="https://chat.whatsapp.com/F16ZYEs0abCKh4HeJfCgdV" class="btn-rsvp" target="_blank">Confirmar via WhatsApp</a>
         </section>
     </main>
 
@@ -99,24 +56,18 @@
     </footer>
 
     <!-- Elemento de áudio para a trilha sonora -->
-    <audio id="bg-music" autoplay loop>
-        <source src="avengers-theme.mp3" type="audio/mpeg">
-    </audio>
+    <audio id="bg-music" loop><source src="/avengers-theme.mp3" type="audio/mpeg"></audio>
 
     <script>
-        const overlay = document.getElementById('overlay');
-        const btnAbrir = document.getElementById('btn-abrir');
+        const btn = document.getElementById('start-btn');
+        const overlay = document.getElementById('loading-screen');
         const audio = document.getElementById('bg-music');
 
-        btnAbrir.addEventListener('click', function() {
-            // Inicia a música (os navegadores permitem o áudio após este clique)
-            audio.play().catch(err => console.log("Erro ao iniciar áudio:", err));
-
-            // Esconde a tela preta suavemente conforme definido no seu CSS
-            overlay.style.opacity = '0';
-            overlay.style.visibility = 'hidden';
+        btn.addEventListener('click', () => {
+            audio.play().catch(error => console.log("Erro ao reproduzir áudio:", error));
+            overlay.classList.add('fade-out');
+            setTimeout(() => overlay.style.display = 'none', 500);
         });
     </script>
-
 </body>
 </html>
