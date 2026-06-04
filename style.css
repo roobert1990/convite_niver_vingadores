@@ -73,6 +73,7 @@ body {
     max-width: 800px;
     margin: -40px auto 0;
     position: relative;
+    right: 10px;
     z-index: 2;
 }
 
