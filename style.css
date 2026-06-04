@@ -49,7 +49,7 @@ body {
 }
 
 .title {
-    font-size: 5rem;
+    font-size: clamp(2.2rem, 12vw, 5rem);
     text-transform: uppercase;
     line-height: 0.9;
     letter-spacing: 2px;
@@ -61,7 +61,7 @@ body {
 }
 
 .subtitle {
-    font-size: 1.2rem;
+    font-size: clamp(0.9rem, 4vw, 1.2rem);
     margin-top: 15px;
     font-weight: 400;
     text-transform: uppercase;
@@ -78,6 +78,7 @@ body {
 }
 
 .info-card {
+    overflow-wrap: break-word;
     background: var(--gray-bg);
     padding: 40px;
     border-radius: 8px;
@@ -188,10 +189,11 @@ footer {
 
 @media (max-width: 600px) {
     .hero-section {
-        height: 40vh; /* Altura ajustada para mobile */
+        min-height: 60vh; /* Garante espaço para o texto sem cortar */
+        height: auto;
+        padding: 40px 0;
         background-position: center top; /* Foca na parte superior da imagem */
         background-attachment: scroll; /* Melhora a performance em navegadores móveis */
-        background-size:contain;
     }
 
     .overlay {
@@ -201,12 +203,11 @@ footer {
     }
 
     .title { 
-        font-size: 2rem;
         padding: 0 6px;
     }
 
     .subtitle {
-        font-size: 0.7rem;
+        font-weight: bold;
         margin-top: 10px;
         padding: 0 20px;
         line-height: 1.4;
