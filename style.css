@@ -189,11 +189,12 @@ footer {
 
 @media (max-width: 600px) {
     .hero-section {
-        min-height: 60vh; /* Garante espaço para o texto sem cortar */
+        min-height: 50vh; /* Garante espaço para o texto sem cortar */
         height: auto;
         padding: 40px 0;
         background-position: center top; /* Foca na parte superior da imagem */
         background-attachment: scroll; /* Melhora a performance em navegadores móveis */
+        background-size:contain;
     }
 
     .overlay {
@@ -218,6 +219,8 @@ footer {
         margin: -60px 15px 0; /* Puxa o card para cima da imagem suavemente */
         text-align: center;
         font-size: 0.9rem;
+        position: relative;
+        top: 20px;
 
     }
 
@@ -235,7 +238,7 @@ footer {
 
     .content {
         position: relative;
-        top: 17px;
+        top: 50px;
     }
 
     .local {
