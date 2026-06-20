@@ -243,6 +243,34 @@ footer {
         font-size: 12px;
     }
 
+    .btn {
+        padding: 12px 24px;
+        font-size: 16px;
+        font-weight: 600;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease; /* Transição suave para todos os efeitos */
+        text-decoration: none;
+        
+    }
+
+    .btn-modern {
+       background-color: #f3f3f3; /* Roxo/Indigo moderno */
+       color: #ffffff;
+       box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2);
+    }
+
+    .btn-modern:hover {
+       background-color: #4338ca;
+       transform: translateY(-2px); /* Sobe de leve */
+       box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3); /* Sombra aumenta */
+    }
+
+    .btn-modern:active {
+       transform: translateY(0); /* Volta ao normal ao clicar */
+    }
+
 }
 
 /* Estilos para a Tela de Carregamento */
@@ -295,3 +323,4 @@ footer {
     letter-spacing: 2px;
     color: var(--marvel-gold);
 }
+
